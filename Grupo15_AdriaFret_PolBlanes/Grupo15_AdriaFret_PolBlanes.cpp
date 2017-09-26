@@ -11,7 +11,22 @@
 #include <map>
 #include <set>
 
+struct compararmap {
+	bool operator() (const char& menor, const char& mayor) const
+	{
+		return menor<mayor;
+	}
+};
 
+struct compararset {
+	bool operator() (const int& menor, const int& mayor) const
+	{
+		return menor<mayor;
+	}
+};
+
+bool cFuncioncomparar(char menor, char mayor) { return menor<mayor; }
+bool iFuncioncomparar(int menor, int mayor) { return menor<mayor; }
 
 void main()
 {
@@ -162,5 +177,79 @@ void main()
 
 	//Construcciones posibles de todos los contenedore
 
+	//Constructores de vector
+	std::vector<int> v1;                                
+	std::vector<int> v2(5, 145);                       
+	std::vector<int> v3(v2.begin(), v2.end());  
+	std::vector<int> v4(v3);
 
+	int x[] = { 15,16,17,4,8,99,54,47 };
+	std::vector<int> v5(x, x + sizeof(x) / sizeof(int));
+
+	//Constructores de deque
+	std::deque<int> deq1;                                
+	std::deque<int> deq2(5, 145);                       
+	std::deque<int> deq3(deq2.begin(), deq2.end());  
+	std::deque<int> deq4(deq3);                       
+
+	int x2[] = { 15,16,17,4,8,99,54,47 };
+	std::deque<int> deq5(x2, x2 + sizeof(x2) / sizeof(int));
+
+	//Constructores de queue
+	std::queue<int> q1;
+	std::deque<int> q2(5, 145);
+	std::queue<int> q3(q2);
+
+	//Constructores de priority_queue
+	int x3[] = { 15,16,17,4,8,99,54,47 };
+
+	std::priority_queue<int> pq1;
+	std::priority_queue<int> pq2(x3, x3 + 8);
+
+	//Constructores de stack
+	std::stack<int> stack1;
+	std::deque<int> stack2(deq2);
+
+	//Constructores de list
+	std::list<int> list1;                               
+	std::list<int> list2(5, 145);                       
+	std::list<int> list3(list2.begin(), list2.end());  
+	std::list<int> list4(list3);                       
+
+	int x4[] = { 15,16,17,4,8,99,54,47 };
+	std::list<int> list5(x4, x4 + sizeof(x4) / sizeof(int));
+
+	//Constructores de forward_list
+	std::forward_list<int> flist1;                      
+	std::forward_list<int> flist2(5, 145);              
+	std::forward_list<int> flist3(flist2.begin(), flist2.end()); 
+	std::forward_list<int> flist4(flist3);            
+	std::forward_list<int> flist5(std::move(flist4));  
+	std::forward_list<int> flist6 = { 15,16,17,4,8,99,54,47 };
+
+	//Constructores de map
+	std::map<char, int> map1;
+	map1['A'] = 1;
+	map1['B'] = 2;
+	map1['C'] = 3;
+	map1['D'] = 4;
+	std::map<char, int> map2(map1.begin(), map1.end());
+	std::map<char, int> map3(map2);
+
+	std::map<char, int, compararmap> map4;                 
+
+	bool(*cpuntero)(char, char) = cFuncioncomparar;
+	std::map<char, int, bool(*)(char, char)> map5(cpuntero);
+
+	//Constructores de set
+	std::set<int> set1;                           
+	int x5[] = { 15,16,17,4,8,99,54,47 };
+	std::set<int> set2(x5, x5 + 5);        
+	std::set<int> set3(set2);                  
+	std::set<int> set4(set2.begin(), set2.end());  
+
+	std::set<int, compararset> fifth;                 
+
+	bool(*ipuntero)(int, int) = iFuncioncomparar;
+	std::set<int, bool(*)(int, int)> set6(ipuntero);
 }
