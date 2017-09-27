@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <iostream>
 #include <string>
 
@@ -34,6 +33,7 @@ void main()
 	//Contenedor secuencial vector
 	std::vector<int> v (4, 500);
 	std::vector<int>::iterator itv=v.begin();
+	std::vector<int>::reverse_iterator ritv = v.rbegin();
 
 	std::cout << "Recorrer el vector de ints:" << std::endl;
 
@@ -55,10 +55,19 @@ void main()
 
 	std::cout << std::endl;
 
+	while (ritv != v.rend())
+	{
+		std::cout << *ritv << std::endl;
+		ritv++;
+	}
+
+	std::cout << std::endl;
+
 	//Contenedor secuencial deque
 
 	std::deque<int> d(4, 800);
 	std::deque<int>::iterator itd = d.begin();
+	std::deque<int>::reverse_iterator ritd = d.rbegin();
 
 	std::cout << "Recorrer la deque de ints:" << std::endl;
 
@@ -79,10 +88,19 @@ void main()
 
 	std::cout << std::endl;
 
+	while (ritd != d.rend())
+	{
+		std::cout << *itd << std::endl;
+		ritd++;
+	}
+
+	std::cout << std::endl;
+
 	//Contenedor secuencial list
 
 	std::list<float> l(4, 250.40);
 	std::list<float>::iterator itl = l.begin();
+	std::list<float>::reverse_iterator ritl = l.rbegin();
 
 	std::cout << "Recorrer la list de floats:" << std::endl;
 
@@ -99,6 +117,14 @@ void main()
 	{
 		itl--;
 		std::cout << *itl << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	while (ritl != l.rend())
+	{
+		std::cout << *ritl << std::endl;
+		ritl++;
 	}
 
 	std::cout << std::endl;
@@ -126,6 +152,7 @@ void main()
 	m[4] = "Matt";
 
 	std::map<int, std::string>::iterator itm=m.begin();
+	std::map<int, std::string>::reverse_iterator ritm = m.rbegin();
 
 	std::cout << "Recorrer el mapa de ints y strings:" << std::endl;
 
@@ -146,6 +173,14 @@ void main()
 
 	std::cout << std::endl;
 
+	while (ritm != m.rend())
+	{
+		std::cout << ritm->first << "-" << ritm->second << std::endl;
+		ritm++;
+	}
+
+	std::cout << std::endl;
+
 	//Contenedor asociativo set
 
 	std::set<int> s;
@@ -154,6 +189,7 @@ void main()
 	s.insert(18);
 	s.insert(99);
 	std::set<int>::iterator its = s.begin();
+	std::set<int>::reverse_iterator rits = s.rbegin();
 
 	std::cout << "Recorrer el set de ints:" << std::endl;
 
@@ -170,6 +206,14 @@ void main()
 	{
 		its--;
 		std::cout << *its << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	while (rits != s.rend())
+	{
+		std::cout << *rits << std::endl;
+		rits++;
 	}
 
 	std::cout << std::endl;
