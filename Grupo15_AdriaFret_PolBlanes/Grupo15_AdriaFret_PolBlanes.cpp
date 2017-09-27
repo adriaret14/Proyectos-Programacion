@@ -90,7 +90,7 @@ void main()
 
 	while (ritd != d.rend())
 	{
-		std::cout << *itd << std::endl;
+		std::cout << *ritd << std::endl;
 		ritd++;
 	}
 
